@@ -9,10 +9,15 @@ namespace Sets_and_Dictionaries
         static void Main()
         {
             Dictionary<string, HashSet<int>> persons = new Dictionary<string, HashSet<int>>();
-
-            string input = Console.ReadLine();
-            while (input == "JOKER")
+            
+            while (true)
             {
+                string input = Console.ReadLine();
+                if (input == "JOKER")
+                {
+                    break;
+                }
+
                 string[] thisRow = input.Split(new[] { ':', ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                 string personName = thisRow[0];
                 
@@ -63,12 +68,11 @@ namespace Sets_and_Dictionaries
 
                     if (!persons.ContainsKey(personName))
                     {
-                        persons[personName] = new HashSet<int> {0};
+                        persons[personName] = new HashSet<int>();
                     }
 
                     persons[personName].Add(cardPoints);
                 }
-                input = Console.ReadLine();
             }
             foreach (var person in persons)
             {
